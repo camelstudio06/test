@@ -1,0 +1,180 @@
+﻿@model Announcement
+
+<section>
+    <div class="wrapper">
+        <div class="first-number">
+
+        </div>
+        <div class="admin-warning">
+            <p>Elan məlumatlarının yenilənməsi</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All"></div>
+            <div class="car-type-add">
+                <div class="left-side">
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.Model.BrandId">
+                            Marka
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="@Model.Automobile.Model.BrandId" asp-items="@(new SelectList(ViewBag.Brands, "Id", "Name"))" class="s-brand-select">
+                                <option value="">Bütün markalar</option>
+                            </select>
+                            <span asp-validation-for="@Model.Automobile.Model.BrandId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.ModelId">
+                            Model
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="@Model.Automobile.ModelId" asp-items="@(new SelectList(ViewBag.Models, "Id", "Name"))" class="s-model-select">
+                                <option value="">Bütün modellər</option>
+                            </select>
+                            <span asp-validation-for="@Model.Automobile.ModelId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.Distance">
+                            Yürüş km
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <input asp-for="@Model.Automobile.Distance">
+                            <span asp-validation-for="@Model.Automobile.Distance"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.ColorId">
+                            Rəng
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="@Model.Automobile.ColorId" asp-items="@(new SelectList(ViewBag.Colors, "Id", "Name"))">
+                                <option value="">Rəngi seç</option>
+                            </select>
+                            <span asp-validation-for="@Model.Automobile.ColorId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="LocationId">
+                            Şəhər
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="LocationId" asp-items="@(new SelectList(ViewBag.Locations, "Id", "Name"))">
+                                <option value="">Şəhər seç</option>
+                            </select>
+                            <span asp-validation-for="LocationId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.Price">
+                            Qiymət
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <input asp-for="@Model.Automobile.Price" class="price">
+                            <span asp-validation-for="@Model.Automobile.Price"></span>
+
+                            <span class="valyuta-azn">
+                                <label>AZN</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <img src="~/img/@Model.Automobile.MainPhotoURL" style="width:200px;" />
+                        <input asp-for="@Model.Automobile.Photo" />
+                        <span asp-validation-for="@Model.Automobile.Photo"></span>
+
+                    </div>
+                    <div class="car-type-choose">
+                        @foreach (var photo in Model.Automobile.AutoPhotos)
+                        {
+                            <img src="~/img/@photo.PhotoURL" style="width:150px;" />
+                        }
+                        <input asp-for="@Model.Photos" />
+                        <span asp-validation-for="@Model.Photos"></span>
+
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.FuelId">
+                            Yanacaq növü
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="@Model.Automobile.FuelId" asp-items="@(new SelectList(ViewBag.Fuels, "Id", "Name"))">
+                                <option value="">Yanacaq növləri</option>
+                            </select>
+                            <span asp-validation-for="@Model.Automobile.FuelId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.SpeedControlId">
+                            Sürət qutusu
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="@Model.Automobile.SpeedControlId" asp-items="@(new SelectList(ViewBag.SpeedControls, "Id", "Name"))">
+                                <option value="">Sürət qutusu seç</option>
+                            </select>
+                            <span asp-validation-for="@Model.Automobile.SpeedControlId"></span>
+
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.Year">
+                            Buraxılış ili
+                            <abbr></abbr>
+                        </label>
+                        <input asp-for="@Model.Automobile.Year" type="date" class="form-control" style="margin-left:180px;width:277px;height:32px;" />
+                        <span asp-validation-for="@Model.Automobile.Year"></span>
+
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="@Model.Automobile.Motor">
+                            Mühərrikin həcmi, sm<sup>3</sup>
+                            <abbr></abbr>
+                        </label>
+                        <input asp-for="@Model.Automobile.Motor" class="form-control" style="margin-left:180px;width:277px;height:32px;" />
+                        <span asp-validation-for="@Model.Automobile.Motor"></span>
+
+                    </div>
+                    <div class="car-type-choose">
+                        <input asp-for="IsVIP" />
+                        <span asp-validation-for="IsVIP"></span>
+
+                        <label asp-for="IsVIP">VIP(30 gün pulsuz)</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="credit-barter-text-section">
+                <div class="more-information">
+                </div>
+                <div class="credit-addMoreInformation">
+                    <label asp-for="@Model.Automobile.ShortInfo">Əlavə məlumat</label>
+                    <textarea asp-for="@Model.Automobile.ShortInfo" cols="30" rows="10"></textarea>
+                    <span asp-validation-for="@Model.Automobile.ShortInfo"></span>
+
+                </div>
+            </div>
+            <div class="car-type-choose" style="display:flex;justify-content:flex-end;">
+                <input type="submit" value="Elana düzəliş et" style="margin:30px;" />
+            </div>
+            <div class="clear"></div>
+        </form>
+
+    </div>
+    <div class="clear"></div>
+</section>

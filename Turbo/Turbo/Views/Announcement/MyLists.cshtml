@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Announcement>
+
+
+@{
+    int number = 1;
+}
+
+
+
+<h3>Elanlar</h3>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Sıra</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Qiymət</th>
+            <th>İl</th>
+            <th>Şəhər</th>
+            <th>VIP</th>
+            <th>Satan şəxs</th>
+            <th>Ətraflı məlumat</th>
+            <th>Əməliyyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var announce in Model)
+        {
+        <tr>
+            <td>@(number++)</td>
+            <td>@announce.Automobile.Model.Brand.Name</td>
+            <td>@announce.Automobile.Model.Name</td>
+            <td>@announce.Automobile.Price  AZN</td>
+            <td>@announce.Automobile.Year.Year</td>
+            <td>@announce.Location.Name</td>
+            @if (announce.IsVIP == true)
+            {
+                <td>Hə</td>
+            }
+            else
+            {
+                <td>Yox</td>
+            }
+            <td>@announce.CustomUser.FirstName</td>
+            <td>
+                <a asp-controller="Announcement" asp-action="ListsItem" asp-route-id="@announce.Id">
+                    Daha çox
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Announcement" asp-action="EditItem" asp-route-id="@announce.Id">
+                    ...
+                </a>
+                <a asp-controller="Announcement" asp-action="DeleteItem" asp-route-id="@announce.Id">
+                    X
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

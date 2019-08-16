@@ -1,0 +1,150 @@
+﻿@model  Announcement
+
+<section>
+    <div class="wrapper">
+        <div class="first-number">
+
+        </div>
+        <div class="admin-warning">
+            <p>Elanın silinməsi</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="car-type-add">
+                <div class="left-side">
+                    <div class="car-type-choose">
+                        <label>
+                            Marka
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Automobile.Model.Brand.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Model
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Automobile.Model.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Yurus km
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <input value="@Model.Automobile.Distance" disabled>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Reng
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Automobile.Color.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Şəhər
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Location.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Qiymət
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <input class="price" value="@Model.Automobile.Price" disabled>
+                            <span class="valyuta-azn">
+                                <label>AZN</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <img src="~/img/@Model.Automobile.MainPhotoURL" style="width:200px;"/>
+                    </div>
+                    <div class="car-type-choose">
+                        @foreach (var photo in Model.Automobile.AutoPhotos)
+                        {
+                            <img src="~/img/@photo.PhotoURL" style="width:150px;" />
+                        }
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="car-type-choose">
+                        <label>
+                            Yanacaq novu
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Automobile.Fuel.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Suret qutusu
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select disabled>
+                                <option value="">@Model.Automobile.SpeedControl.Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Buraxilis ili
+                            <abbr></abbr>
+                        </label>
+                        <input class="form-control" type="date" value="@Model.Automobile.Year.Year"  style="margin-left:180px;width:277px;height:32px;" disabled/>
+                    </div>
+                    <div class="car-type-choose">
+                        <label>
+                            Muherrikin hecmi, sm3
+                            <abbr></abbr>
+                        </label>
+                        <input class="form-control" value="@Model.Automobile.Motor" style="margin-left:180px;width:277px;height:32px;" disabled />
+                    </div>
+                    <div class="car-type-choose">
+                        <input type="checkbox" @(Model.IsVIP == true ? "checked" : " ") disabled />
+                        <label>VIP(30 gün pulsuz)</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="credit-barter-text-section">
+                <div class="more-information">
+                </div>
+                <div class="credit-addMoreInformation">
+                    <label>Əlavə məlumat</label>
+                    <textarea cols="30" rows="10" disabled>@Model.Automobile.ShortInfo</textarea>
+                </div>
+            </div>
+            <div class="car-type-choose" style="display:flex;justify-content:flex-end;">
+                <input type="submit" value="Elanı sil" style="margin:30px;" />
+            </div>
+            <div class="clear"></div>
+        </form>
+
+    </div>
+    <div class="clear"></div>
+</section>

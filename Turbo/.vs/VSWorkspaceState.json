@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Turbo",
+    "\\Turbo\\Areas",
+    "\\Turbo\\Areas\\Admin",
+    "\\Turbo\\Areas\\Admin\\Views",
+    "\\Turbo\\Areas\\Admin\\Views\\Shared",
+    "\\Turbo\\Controllers",
+    "\\Turbo\\Models",
+    "\\Turbo\\ViewModels",
+    "\\Turbo\\Views",
+    "\\Turbo\\Views\\Announcement",
+    "\\Turbo\\Views\\Home"
+  ],
+  "SelectedNode": "\\Turbo.sln",
+  "PreviewInSolutionExplorer": false
+}

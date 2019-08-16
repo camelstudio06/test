@@ -1,0 +1,10 @@
+﻿<section>
+    <div class="wrapper">
+        @if (TempData["Succeed"] != null)
+        {
+            <p style="background-color: lawngreen; color: white; padding: 5px;margin-bottom: 20px 0;text-align:center;">Təbrik edirik ! Hesabınız təsdiqləndi.</p>
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Login">Hesaba daxil ol</a>
+        }
+        <div class="clear"></div>
+    </div>
+</section>

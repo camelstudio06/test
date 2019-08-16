@@ -1,0 +1,113 @@
+﻿@model  Announcement
+
+
+<section>
+    <div class="wrapper">
+        <div class="products s-list-item-bold">
+            <div class="product" style="
+    display: flex;
+    flex-direction: column;
+"><div class="product-photos">
+    <img alt="" src="~/img/@Model.Automobile.MainPhotoURL" style="width:300px;">
+
+    @foreach (var photo in Model.Automobile.AutoPhotos)
+    {
+        <img alt="" src="~/img/@photo.PhotoURL" style="width:200px;">
+
+    }
+    <div class="product-photos-thumbnails product-photos-thumbnails_m" style="
+    margin-top: 10px;
+"></div>
+</div><h3 class="product-name product-name-row" style="
+    margin-top: 30px;
+">
+                   @Model.Automobile.Model.Brand.Name  @Model.Automobile.Model.Name, <span class="nobr">@Model.Automobile.Motor L</span>, <span class="nobr">@Model.Automobile.Year.Year il</span>, <span class="nobr">@Model.Automobile.Distance km</span>
+                </h3><div class="product-header" style="
+    display: flex;
+    height: 100px;
+">
+                         <h3 class="product-price" style="
+    width: 20%;
+    height: 100px;
+">
+                             @Model.Automobile.Price AZN
+                         </h3><div class="product-statistics"></div>
+                </div><div class="product-body" style="
+    display: flex;
+">
+                    <div class="product-properties-container" style="
+    display: flex;
+    width: 100%;
+    /* height: 100px; */
+    /* position: relative; */
+    bottom: 50px;
+"><ul class="product-properties"><li class="product-properties-i"><label for="ad_region">Şəhər</label><div class="product-properties-value">@Model.Location.Name</div></li>
+                        <li class="product-properties-i"><label for="ad_make_id">Marka</label>
+                        <div class="product-properties-value"><a target="_blank" href="/makes/14-lexus">@Model.Automobile.Model.Brand.Name</a></div></li>
+                        <li class="product-properties-i"><label for="ad_model">Model</label>
+                        <div class="product-properties-value"><a target="_blank" href="/autos?q%5Bmake%5D%5B%5D=14&amp;q%5Bmodel%5D%5B%5D=471">@Model.Automobile.Model.Name</a></div></li>
+                        <li class="product-properties-i"><label for="ad_reg_year">Buraxılış ili</label><div class="product-properties-value"><a target="_blank" href="/autos?q%5Bmake%5D%5B%5D=14&amp;q%5Bmodel%5D%5B%5D=471&amp;q%5Byear_from%5D=2016&amp;q%5Byear_to%5D=2016">@Model.Automobile.Year.Year</a></div></li>
+                        <li class="product-properties-i"><label for="ad_color">Rəng</label><div class="product-properties-value">@Model.Automobile.Color.Name</div></li>
+                        <li class="product-properties-i"><label for="ad_engine_volume">Mühərrikin həcmi</label><div class="product-properties-value">@Model.Automobile.Motor L</div></li>
+                        <li class="product-properties-i"><label for="ad_fuel_type">Yanacaq növü</label><div class="product-properties-value">@Model.Automobile.Fuel.Name</div></li><li class="product-properties-i">
+                        <label for="ad_mileage">Yürüş</label><div class="product-properties-value">@Model.Automobile.Distance km</div></li>
+                        <li class="product-properties-i"><label for="ad_transmission">Sürətlər qutusu</label><div class="product-properties-value">Avtomat</div></li>
+                        <li class="product-properties-i product-properties_price">
+                        <label for="ad_price">Qiymət</label><div class="product-properties-value"><div class="product-price">@Model.Automobile.Price <span>AZN</span></div></div></li></ul>
+                        </div><div class="product-description" style="
+    /* display: block; */
+    width: 100%;
+">
+    <h6 class="product-text" style="width: 600px;">
+        @Model.Automobile.FullInfo
+    </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+
+
+
+<section style="margin-top:50px;">
+    <div class="wrapper">
+        <h3>@Model.Automobile.Model.Brand.Name @Model.Automobile.Model.Name elanları</h3>
+        <div class="products">
+            @foreach (var announce in ViewBag.AnnouncementsWithSameModels)
+            {
+                <a asp-controller="Announcement" asp-action="ListsItem" asp-route-id="@announce.Id">
+                    <div class="productBorder">
+                        <div class="onliCar">
+                            <i class="far fa-heart likeIcon"></i>
+                            <img src="~/img/@announce.Automobile.MainPhotoURL" alt="">
+                            <div class="productPrice">
+                                @announce.Automobile.Price <span>AZN</span>
+                            </div>
+                            <div class="productsInfo">
+                                <p class="carName">@announce.Automobile.Model.Brand.Name  @announce.Automobile.Model.Name</p>
+                                <div class="carInfo">
+                                    <p class="year">
+                                        @announce.Automobile.Year.ToShortDateString() il
+
+                                        <span></span>
+                                    </p>
+                                    <p class="engin">
+                                        @announce.Automobile.Motor L
+                                        <span></span>
+                                    </p>
+                                    <p class="km">@announce.Automobile.Distance km </p>
+                                </div>
+                                <div class="enterDay">@announce.Location.Name, @announce.PublishDate.ToShortDateString() <i class="fas fa-gem"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>

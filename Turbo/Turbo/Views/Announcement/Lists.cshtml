@@ -1,0 +1,39 @@
+﻿@model  IEnumerable<Announcement>
+
+    <section>
+        <div class="wrapper">
+            <div class="products">
+                @foreach (var announce in Model)
+                {
+                    <a asp-controller="Announcement" asp-action="ListsItem" asp-route-id="@announce.Id">
+                        <div class="productBorder">
+                            <div class="onliCar">
+                                <i class="far fa-heart likeIcon"></i>
+                                <img src="~/img/@announce.Automobile.MainPhotoURL" alt="">
+                                <div class="productPrice">
+                                    @announce.Automobile.Price <span>AZN</span>
+                                </div>
+                                <div class="productsInfo">
+                                    <p class="carName">@announce.Automobile.Model.Brand.Name  @announce.Automobile.Model.Name</p>
+                                    <div class="carInfo">
+                                        <p class="year">
+                                            @announce.Automobile.Year.ToShortDateString() il
+
+                                            <span></span>
+                                        </p>
+                                        <p class="engin">
+                                            @announce.Automobile.Motor L
+                                            <span></span>
+                                        </p>
+                                        <p class="km">@announce.Automobile.Distance km </p>
+                                    </div>
+                                    <div class="enterDay">@announce.Location.Name, @announce.PublishDate.ToShortDateString() <i class="fas fa-gem"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>

@@ -1,0 +1,30 @@
+﻿@model  NewsPost
+
+<section>
+    <div class="wrapper">
+        <div class="products">
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div class="s-title-holder">
+                        <h3>@Model.Title</h3>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="s-photo-holder">
+                        <img src="~/img/@Model.PhotoURL" alt="">
+                    </div>
+                </div>
+                <div class="col-12 mt-3">
+                    <div class="s-info-holder">
+                        <h6>@Model.MainArticle</h6>
+                    </div>
+                    <div class="s-date-holder">
+                        <span>@Model.PublishDate.ToShortDateString()</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+

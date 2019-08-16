@@ -1,0 +1,180 @@
+﻿@model  AnnouncementVM
+
+<!--Elan yerlesdirmek-->
+<section>
+    <div class="wrapper">
+        <div class="first-number">
+           
+        </div>
+        <div class="admin-warning">
+            <p>ELAN</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="car-type-add">
+                <div class="left-side">
+                    <div class="car-type-choose">
+                        <label asp-for="BrandId">
+                            Marka
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="BrandId" asp-items="@(new SelectList(ViewBag.Brands, "Id", "Name"))" class="s-brand-select">
+                                <option value="">Bütün markalar</option>
+                            </select>
+                            <span asp-validation-for="BrandId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="ModelId">
+                            Model
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="ModelId" asp-items="@(new SelectList(ViewBag.Models, "Id", "Name"))" class="s-model-select">
+                                <option value="">Bütün modellər</option>
+                            </select>
+                            <span asp-validation-for="ModelId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Distance">
+                            Yürüş km
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <input asp-for="Distance">
+                            <span asp-validation-for="Distance"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="ColorId">
+                            Rəng
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="ColorId" asp-items="@(new SelectList(ViewBag.Colors, "Id", "Name"))">
+                                <option value="">Rəng seçin</option>
+                            </select>
+                            <span asp-validation-for="ColorId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="LocationId">
+                            Şəhər
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="LocationId" asp-items="@(new SelectList(ViewBag.Locations, "Id", "Name"))">
+                                <option value="">Şəhər seçin</option>
+                            </select>
+                            <span asp-validation-for="LocationId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Price">
+                            Qiymət
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <span asp-validation-for="Price"></span>
+                            <input class="price" asp-for="Price">
+                            <span class="valyuta-azn">
+                                <label>AZN</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Photo">
+                            Əsas şəkil
+                            <abbr></abbr>
+                        </label>
+                        <input asp-for="Photo" value="Şəkil seç" style="margin-left:180px;" />
+                        <span asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Photos">
+                            Əlavə şəkillər
+                            <abbr></abbr>
+                        </label>
+                        <input asp-for="Photos" value="Şəkilləri əlavə et" style="margin-left:180px;" />
+                        <span asp-validation-for="Photos"></span>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="car-type-choose">
+                        <label asp-for="FuelId">
+                            Yanacaq növü
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="FuelId" asp-items="@(new SelectList(ViewBag.Fuels, "Id", "Name"))">
+                                <option value="">Yanacaq növləri</option>
+                            </select>
+                            <span asp-validation-for="FuelId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="SpeedControlId">
+                            Sürət qutusu
+                            <abbr></abbr>
+                        </label>
+                        <div class="sellect-choose">
+                            <select asp-for="SpeedControlId" asp-items="@(new SelectList(ViewBag.SpeedControls, "Id", "Name"))">
+                                <option value="">Sürət qutusunu seç</option>
+                            </select>
+                            <span asp-validation-for="SpeedControlId"></span>
+                        </div>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Year">
+                            Buraxılış ili
+                            <abbr></abbr>
+                        </label>
+                        <input class="form-control" asp-for="Year" type="date" style="margin-left:180px;width:277px;height:32px;" />
+                        <span asp-validation-for="Year"></span>
+                    </div>
+                    <div class="car-type-choose">
+                        <label asp-for="Motor">
+                            Mühərrikin həcmi, sm<sup>3</sup>
+                            <abbr></abbr>
+                        </label>
+                        <input class="form-control" asp-for="Motor" style="margin-left:180px;width:277px;height:32px;" />
+                        <span asp-validation-for="Motor"></span>
+                    </div>
+                    <div class="car-type-choose">
+                        <input asp-for="IsVIP" />
+                        <label asp-for="IsVIP">VIP(30 gün pulsuz)</label>
+                        <span asp-validation-for="IsVIP"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="credit-barter-text-section">
+                <div class="more-information">
+                </div>
+                <div class="credit-addMoreInformation">
+                    <label asp-for="ShortInfo">Əlavə məlumat</label>
+                    <textarea cols="30" rows="10" asp-for="ShortInfo"></textarea>
+                    <span asp-validation-for="ShortInfo"></span>
+                </div>
+            </div>
+            <div class="car-type-choose" style="display:flex;justify-content:flex-end;">
+                <input type="submit" value="Elan yerləşdir" style="margin:30px;"/>
+            </div>
+            <div class="clear"></div>
+        </form>
+        
+    </div>
+    <div class="thick-line"></div>
+    <div class="wrapper">
+        <div class="advertisement-type">
+            <div class="rules-and-laws">
+                <p>
+                    Elan yerləşdirərək, siz Turbo.az-ın <a href="#"> İstifadəçi razılaşması</a> və <a href="#">Qaydaları</a> ilə razı olduğunuzu təsdiq edirsiniz.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</section>

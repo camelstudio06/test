@@ -1,0 +1,32 @@
+﻿@model  IEnumerable<NewsPost>
+
+<section>
+    <div class="wrapper">
+        <div class="products">
+            @foreach (var news in Model)
+            {
+                <a asp-controller="News" asp-action="PostsItem" asp-route-id="@news.Id">
+                    <div class="productBorder">
+                        <div class="onliCar">
+                            <i class="far fa-heart likeIcon"></i>
+                            <img src="~/img/@news.PhotoURL" alt="">
+                            <div class="productsInfo">
+                                <p class="carName">@news.Title</p>
+                                <div class="carInfo">
+                                    <p class="engin">
+                                        @news.ShortInfo
+                                        <span></span>
+                                    </p>
+                                    <p class="year">
+                                        @news.PublishDate.ToShortDateString()
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>

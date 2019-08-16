@@ -1,0 +1,54 @@
+﻿@model  IEnumerable<NewsPost>
+
+@{
+    int number = 1;
+}
+
+<h3>Xəbərlər</h3>
+<div class="col-12">
+    <a asp-area="Admin" asp-controller="News" asp-action="Create" class="btn btn-primary btn-block" style="margin-bottom:10px;">Yeni xəbər dərc et</a>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Sıra</th>
+            <th>Şəkil</th>
+            <th>Başlıq</th>
+            <th>Qısa məlumat</th>
+            <th>Tarix</th>
+            <th>Ətraflı məlumat</th>
+            <th>Əməliyyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@(number++)</td>
+                <td>
+                    <img src="~/img/@news.PhotoURL" style="width:150px;"/>
+                </td>
+                <td>@news.Title</td>
+                <td>@news.ShortInfo</td>
+                <td>@news.PublishDate.Year</td>
+                <td>
+                    <a asp-area="Admin" asp-controller="News" asp-action="PostsItem" asp-route-id="@news.Id">
+                        Daha çox
+                    </a>
+                </td>
+                <td>
+                    <a asp-area="Admin" asp-controller="News" asp-action="Edit" asp-route-id="@news.Id" style="margin-right:5px;">
+                        <i class="fas fa-pen">...</i>
+                    </a>
+                    @if (Model.Count() > 1)
+                    {
+                        <a asp-area="Admin" asp-controller="News" asp-action="Delete" asp-route-id="@news.Id">
+                            <i class="far fa-trash-alt">X</i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

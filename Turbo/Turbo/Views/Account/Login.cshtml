@@ -1,0 +1,27 @@
+﻿@model LoginVM
+
+@if (TempData["Log in as an ordinary user"] != null)
+{
+    <p style="background-color: red; color: white; padding: 5px;margin-bottom: 20px 0;text-align:center;">Elan yerləşdirmək üçün hesabınıza daxil olmalısınız.</p>
+
+}
+
+<section>
+    <div class="wrapper">
+        <form method="post" class="mt-5">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="UserName">Istifadəçi adı</label>
+                <input class="form-control" asp-for="UserName" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Şifrə</label>
+                <input class="form-control" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <input class="form-control btn btn-primary" type="submit" value="Daxil ol" />
+        </form>
+        <div class="clear"></div>
+    </div>
+</section>

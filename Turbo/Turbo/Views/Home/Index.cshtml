@@ -1,0 +1,159 @@
+﻿@model HomeVM
+
+@if (TempData["Announcement created"] != null)
+{
+    <p style="background-color: green; color: white;text-align:center;">Yeni elan yerləşdirdiniz.</p>
+}
+
+@if (TempData["Announcement updated"] != null)
+{
+    <p style="background-color: green; color: white;text-align:center;">Elan məlumatları yeniləndi.</p>
+}
+
+@if (TempData["Removing of Announcement"] != null)
+{
+    <p style="background-color: green; color: white;text-align:center;">Elan silindi.</p>
+}
+
+<!--Simple form search-->
+<section>
+    <div class="wrapper">
+        <div class="simple-form-search">
+            <div class="wideSearch-markas">
+                <select id="BrandId" class="s-brand-select" asp-items="@(new SelectList(ViewBag.Brands, "Id", "Name"))">
+                    <option>Bütün markalar</option>
+                </select>
+                <select id="ModelId" class="markas s-model-select" asp-items="@(new SelectList(ViewBag.Models, "Id", "Name"))">
+                    <option>Bütün modellər</option>
+                </select>
+            </div>
+            <div class="wideSearch-priceandYear">
+                <div class="optionalPrice">
+                    <label>Qiyməti</label>
+                    <select class="currency">
+                        <option>AZN <i class="fas fa-angle-down"></i></option>
+                    </select>
+                    <input type="text" placeholder="min." class="optionalMin">
+                    <input type="text" placeholder="maks." class="optionalMax">
+                </div>
+                <div style="margin-top:2px;" class="enterYear">
+                    <label class="year">Buraxılış ili</label>
+                    <input type="text" placeholder="min." class="optionalMin yearMin">
+                    <input type="text" placeholder="maks." class="optionalMax yearMax">
+                </div>
+            </div>
+            <div class="wideSearch-barterCredit">
+                    <select style="margin-left:15px;margin-top:20px;" class="allCity" asp-items="@(new SelectList(ViewBag.Locations, "Id", "Name"))">
+                        <option>Bütün şəhərlər</option>
+                    </select>
+                    <div style="margin-left:15px;margin-top:67px;" class="dailyAds"><p>@ViewBag.AnnouncementsCount elan</p></div>
+            </div>
+            <div class="wideSearch">
+                <button class="search">Axtar</button>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+<!--Vip elanlarTitle-->
+<section>
+    <div class="wrapper">
+        <div class="vipAll vipAdvertise">
+            <p class="vipElanlar">VIP ELANLAR</p>
+            <b class="logoText">Bütün bank xidmətləri telefonunda</b>
+            <img src="https://newmedia.az/iqbal/9/4/sag/logo2.png">
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+<!--Products-->
+<section>
+    <div class="wrapper">
+        <div class="products">
+            @foreach (var announce in Model.VIPAnnouncements)
+            {
+                <a asp-controller="Announcement" asp-action="ListsItem" asp-route-id="@announce.Id">
+                    <div class="productBorder">
+                        <div class="onliCar">
+                            <i class="far fa-heart likeIcon"></i>
+                            <img src="~/img/@announce.Automobile.MainPhotoURL" alt="">
+                            <div class="productPrice">
+                                @announce.Automobile.Price <span>AZN</span>
+                            </div>
+                            <div class="productsInfo">
+                                <p class="carName">@announce.Automobile.Model.Brand.Name  @announce.Automobile.Model.Name</p>
+                                <div class="carInfo">
+                                    <p class="year">
+                                        @announce.Automobile.Year.ToShortDateString() il
+
+                                        <span></span>
+                                    </p>
+                                    <p class="engin">
+                                        @announce.Automobile.Motor L
+                                        <span></span>
+                                    </p>
+                                    <p class="km">@announce.Automobile.Distance km </p>
+                                </div>
+                                <div class="enterDay">@announce.Location.Name, @announce.PublishDate.ToShortDateString() <i class="fas fa-gem"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+<!--Son elanlar-->
+<section>
+    <div class="wrapper">
+        <div class="vipAll vipAdvertise">
+            <p class="vipElanlar">SON ELANLAR</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+<!--Products-->
+<section>
+    <div class="wrapper">
+        <div class="products">
+            @foreach (var announce in Model.RecentAnnouncements)
+            {
+                <a asp-controller="Announcement" asp-action="ListsItem" asp-route-id="@announce.Id">
+                    <div class="productBorder">
+                        <div class="onliCar">
+                            <i class="far fa-heart likeIcon"></i>
+                            <img src="~/img/@announce.Automobile.MainPhotoURL" alt="">
+                            <div class="productPrice">
+                                @announce.Automobile.Price <span>AZN</span>
+                            </div>
+                            <div class="productsInfo">
+                                <p class="carName">@announce.Automobile.Model.Brand.Name</p>
+                                <div class="carInfo">
+                                    <p class="year">
+                                        @announce.Automobile.Year.ToShortDateString() il
+
+                                        <span></span>
+                                    </p>
+                                    <p class="engin">
+                                        @announce.Automobile.Motor L
+                                        <span></span>
+                                    </p>
+                                    <p class="km">@announce.Automobile.Distance km </p>
+                                </div>
+                                <div class="enterDay">@announce.Location.Name, @announce.PublishDate.ToShortDateString() <i class="fas fa-gem"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sarabun:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/layout.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <title>Turbo.az</title>
+</head>
+<body>
+    <style>
+        .s-list-item-bold label 
+        {
+            font-weight: bold;
+        }
+    </style>
+    <!--headervideo start-->
+    <header style="margin-bottom:60px;">
+        <div class="row m-0">
+            <div class="col-12 d-flex flex-column align-items-center p-0">
+                <h6 style="margin:0;background-color:red;color:white;padding:15px;">
+                    DİQQƏT ! Bu qeyri-rəsmi sayt heç bir kommersiya məqsədi daşımır və "Code Academy" təhsil mərkəzinin proqramlaşdırma üzrə təhsil alan tələbəsi Kamal Quliyevin "ASP.NET CORE" mövzusu üzrə təqdim etdiyi Back-End layihəsidir.
+                </h6>
+                <h6 style="margin-top:5px;background-color:lightcoral;color:white;padding:15px;">
+                    Müddət(Deadline) : 9 gün; <br />
+                    Müəllim : Samir Dadaşzadə; <br />
+                    Qrup : P110;
+                </h6>
+                <h6 style="margin-top:5px;background-color:darkblue;color:white;padding:5px;">
+                    <strong>Admin</strong> - İstifadəçi adı: useradmin / Şifrə: userAdmin1234@@   
+                </h6>
+            </div>
+        </div>
+    </header>
+    <!--headervideo end-->
+    <!--registiration start-->
+    <section class="registiration">
+        <div class="wrapper">
+            <div class="col-6">
+                <a asp-controller="Home" asp-action="Index">
+                    <div class="turboAzborder">
+                        <p>TURBO.AZ</p>
+                        <span>MAŞIN ALQI-SATQISI </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+                <p class="register d-flex align-items-center">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Account" asp-action="Login"> <i class="fas fa-user userIcon"></i>Giriş</a>
+                        <a asp-controller="Account" asp-action="Register">Qeydiyyat</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Announcement" asp-action="MyLists" asp-route-name="@User.Identity.Name" class="mr-3 px-3" style="background-color: blue; color:yellow;">Elanlarım</a>
+                        <span class="mr-3 px-3" style="background-color: white;">@User.Identity.Name</span>
+                        <a asp-controller="Account" asp-action="Logout">Hesabdan çıx</a>
+                    }
+                </p>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </section>
+    <!--registiration end-->
+    <!--domaines start-->
+    <section class="domains">
+        <div class="wrapper">
+            <div class="domainsbackground">
+                <div class="domainsborder">
+                </div>
+                <div class="domainsborder binahover">
+                    <p><a href="https://bina.az/">BINA.AZ</a></p>
+
+                </div>
+                <div class="domainsborder taphover">
+                    <p><a href="https://tap.az/">TAP.AZ</a></p>
+
+                </div>
+                <div class="domainsborder bosshover">
+                    <p><a href="https://boss.az">BOSS.AZ</a></p>
+                </div>
+            </div>
+
+
+            <div class="clear"></div>
+        </div>
+    </section>
+    <!--domaines end-->
+    <!--Navbar start-->
+    <section class="navbar">
+        <div class="wrapper" style="position:relative;bottom:8px;">
+            <nav>
+                <ul style="list-style:none;">
+                    <li>
+                        <a asp-controller="Announcement" asp-action="Lists"> Bütün elanlar </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Announcement" asp-action="VIP"> Bütün VIP elanlar </a>
+                    </li>
+                    <li class="navStors">
+                        <a asp-controller="News" asp-action="Posts"> Xəbərlər </a>
+                    </li>
+                    <a href="#">
+                        <li class="navAccessories">
+                            Ehtiyat hissələri və aksessuarlar
+                            <ul>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4045&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Aksessuarlar</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4046&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Audio və video texnika</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4044&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Avtokosmetika və Avtokimya</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4047&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Ehtiyat hissələri</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4043&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>GPS naviqator</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4119&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Qeydiyyat nişanları</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4048&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Siqnalizasiyalar</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=7476&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Videoqeydiyyatçilar</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4050&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Şinlər, disklər və təkərlər</li></a>
+                                <a href="https://tap.az/all/transport/parts-accessories?p%5B798%5D=4051&utm_source=turboaz&utm_medium=link&utm_content=accessories&utm_campaign=desktop"> <li>Digər</li></a>
+
+                            </ul>
+                        </li>
+                    </a>
+
+
+                </ul>
+            </nav>
+
+            <a class="elanYerlesdir" asp-controller="Announcement" asp-action="Create"><i class="fas fa-plus-circle plasIcon"></i><span>Elan</span></a>
+
+            <div class="clear"></div>
+        </div>
+    </section>
+    <!--Navbar end-->
+
+    @RenderBody();
+
+    <section class="wrapper">
+        <div class="footer">
+
+            <div class="contact">
+                <div class="col-3">
+                    <a href="#">İstifadəçi razılaşması</a>
+                    <div class="qaunQaydalar">
+                        <a href="#">Qaydalar</a>
+                        <a href="#" class="qanun">Qanun</a>
+                    </div>
+                    <p><span>©</span>2006-2019 Turbo.Az</p>
+                    <div class="phone-and-email">
+                        <i class="fas fa-phone-volume"></i>
+                        <p>*7707</p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="#">turbo@turbo.az</a>
+                    </div>
+                    <a href="#">Mobil versiyası</a>
+                </div>
+                <div class="col-7">
+                    <p class="adminstrasiyaQanunu">Rəhbərlik saytda yerləşdirilən banner və reklam məzmununa görə məsuliyyət daşımır.</p>
+
+                    <p>
+                        Hər hansı bir məlumatı və fotoşəkili administrasiyanın yazılı icazəsi olmadan istifadə etmək qeyri-qanuni hesab ediləcək və Azərbaycan Respublikasının qanunlarına əsasən cəzalandırılacaqdır !
+                    </p>
+                    <a href="#">Reklam yerləşdirmək</a>
+                </div>
+                <div class="col-2">
+                    <a href="#">
+                        <img src="https://counter.yadro.ru/logo?27.6">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/main.js"></script>
+
+</body>
+</html>
